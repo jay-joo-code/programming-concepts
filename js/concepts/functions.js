@@ -1,3 +1,9 @@
+/* TOPIC: functions are first-class objects
+https://www.javascripttutorial.net/javascript-functions-are-first-class-citizens/
+
+which means, they can be stored in variables, passed into arguments, and returned
+*/
+
 /* function statement / delcaration */
 /* memorize: "starts by declaring that it's a function, syntatically" */
 /* 

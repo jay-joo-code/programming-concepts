@@ -1,5 +1,6 @@
 /* TOPIC: this = a pointer to the instance 
 this references the object that is currently calling the function 
+https://www.javascripttutorial.net/javascript-this/
 */
 
 const counter = {
@@ -81,9 +82,69 @@ console.log('getBrand()', getBrand())
 
 /* TOPIC: explicit this binding with the bind() method of Function.prototype 
 getBrand inherits the bind() method from the Function prototype
+bind() returns a new function with the this keyword set to a specific value
 */
-console.log('getBrand.bind', getBrand.bind)
-console.log('Object.getPrototypeOf(getBrand)', Object.getPrototypeOf(getBrand))
-console.log('getBrand.__proto__.__proto__', getBrand.__proto__.__proto__.constructor === Object)
-console.log('getBrand.__proto__.__proto__.__proto__', getBrand.__proto__.__proto__.__proto__)
+
+const bindedGetBrand = car.getBrand.bind(car)
+console.log('bindedGetBrand()', bindedGetBrand())
+
+const bike = {
+  brand: 'different bike brand'
+}
+
+const bikeBindedGetBrand = car.getBrand.bind(bike)
+console.log('bikeBindedGetBrand()', bikeBindedGetBrand()) // different bike brand
+
+
+/* TOPIC: case 3: constructor invocation 
+the new keyword 
+1. creates new object
+2. creates a pointer to the object type's prototype
+3. assigns this as a pointer to the newly created object
+4. returns this if the constructor doesn't return anything
+*/
+
+function Car(brand) {
+  this.brand = brand
+}
+
+Car.prototype.getBrand = function() {
+  return this.brand
+}
+
+var honda = new Car('honda')
+console.log('honda.getBrand()', honda.getBrand())
+
+/* TOPIC: case 4: indirect invocation. call(), apply()
+call(object, arg1, arg2, ...) 
+apply(object, args[])
+
+Call for Comma, Apply for Array
+*/
+
+Car.prototype.brandString = function(prefix, suffix) {
+  console.log(prefix + this.brand + suffix)
+}
+
+var bmw = new Car('bmw')
+
+var brandString = honda.brandString
+
+brandString.call(honda, 'the car is a ', ' e class')
+brandString.apply(honda, ['the car is a ', ' e class'])
+
+
+/* TOPIC: arrow functions 
+arrow functions do not have its own this binding
+therefore this in arrow functions refer to the this of its lexical parent
+*/
+
+Car.prototype.arrow = () => {
+  // lexical this binding means this refers to the global object
+  console.log('this', this) // window
+}
+
+bmw.arrow()
+
+
 
