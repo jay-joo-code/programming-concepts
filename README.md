@@ -1,4 +1,4 @@
-# This is NOT how I usually write commit messages
+# This is NOT how I usually write code or commit messages
 
 This repo exists for recording my learning journey.
 
