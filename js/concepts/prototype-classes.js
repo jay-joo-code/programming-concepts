@@ -173,6 +173,67 @@ function CustomFunction() {
 const myFunction = new CustomFunction()
 console.log('myFunction.toString()', myFunction.toString())
 
+/* TOPIC: overriding methods from objects the inherit from a different object type */
+
+function Base() {
+
+}
+
+Base.prototype.foo = function() {
+  console.log('base foo')
+}
+
+Base.prototype.boo = function() {
+  console.log('base boo')
+}
+
+class Extended extends Base {
+  foo() {
+    console.log('extended foo')
+  }
+}
+
+const baseInstance = new Base()
+const extendedInstance = new Extended()
+
+baseInstance.foo()  // based foo
+extendedInstance.foo()  // extended foo
+
+Base.prototype.foo = function () {
+  console.log('base override')
+}
+
+baseInstance.foo()  // base override
+extendedInstance.foo()  // extended foo
+
+baseInstance.boo()  // base boo
+extendedInstance.boo()  // base boo
+console.log('baseInstance.boo === extendedInstance.boo', baseInstance.boo === extendedInstance.boo) // true
+
+Base.prototype.boo = function() {
+  console.log('Base override')
+}
+
+baseInstance.boo()  // base override
+extendedInstance.boo()  // base override
+
+baseInstance.boo = function() {
+  console.log('baseInstance override')
+}
+
+baseInstance.boo()  // baseInstance override
+extendedInstance.boo()  // base override
+
+// override only applied to the instance
+console.log('baseInstance.boo === extendedInstance.boo', baseInstance.boo === extendedInstance.boo) 
+
+// other instances show the Base override
+const baseInstance2 = new Base()
+baseInstance2.boo() // base override
+
+
+
+
 /* TOPIC: difference between JS inheritance and class based inheritance
 https://medium.com/javascript-scene/master-the-javascript-interview-what-s-the-difference-between-class-prototypal-inheritance-e4cd0a7562e9
 https://stackoverflow.com/questions/19633762/classical-inheritance-vs-prototypal-inheritance-in-javascript
@@ -188,20 +249,69 @@ in prototypal inheritance, prototypes are objects themselves.
 objects are inheriting from other prototype objects. 
 more like a chain / singly linked list rather than a heiarchy.
 
-key difference: in classical inheritance, 
+key difference: 
+- in classical inheritance, 
+  - only classes inherit from other classes 
+  - classes define blueprints, which can be instantiated at runtime
+  - encapsulation with private, protected keywords
+
+- in prototypal inheritance, 
+  - objects inherit from other prototype objects
+  - prototypes are object instances themselves
+  - there is no encapsulation with prototypes alone (no private, protected keywords)
+
+
 */
 
-
-
-/* TOPIC: classes behave like constructor functions 
-
-class inheritance in JS is implemented on top of prototypal inheritance
-
-*/
-
-class TestClass {
-
+function TestClass2(boo) {
+  this.boo = boo
 }
 
-console.log('typeof TestClass', typeof TestClass) // function
+const testObj = new TestClass2('hi')
+
+
+
+
+/* TOPIC: classes vs constructor functions
+
+class inheritance in JS is implemented on top of prototypal inheritance
+*/
+
+
+/* TOPIC: all functions inherit from Function, regardless of the prototype chain */
+
+function RootFunction() {
+}
+
+function ExtendedFunction() {
+  RootFunction.call(this)
+}
+
+ExtendedFunction.prototype = Object.create(RootFunction.prototype)
+ExtendedFunction.prototype.constructor = ExtendedFunction
+
+const rootInstance = new RootFunction()
+const extendedInstance2 = new ExtendedFunction()
+
+// ExtendedFunction.prototype inherits from RootFunction.prototype
+console.log('extendedInstance2.__proto__ === ExtendedFunction.prototype', extendedInstance2.__proto__ === ExtendedFunction.prototype)
+console.log('extendedInstance2.__proto__.__proto__ === rootInstance.__proto__', extendedInstance2.__proto__.__proto__ === rootInstance.__proto__)
+
+// both ExtendedFunction and RootFuntion inherit from Function.prototype,
+// because constructor functions are still functions
+console.log('ExtendedFunction.__proto__ === Function.prototype', ExtendedFunction.__proto__ === Function.prototype)
+console.log('RootFunction.__proto__ === Function.prototype', RootFunction.__proto__ === Function.prototype)
+
+
+/* TOPIC: classes inherit from its parent class 
+but the prototype chain is the same as that in constructor functions 
+*/
+
+class RootClass {}
+
+class ExtendedClass extends RootClass {}
+
+console.log('ExtendedClass.__proto__', ExtendedClass.__proto__ === RootClass)
+console.log('ExtendedClass.prototype.__proto__ === RootClass.prototype', ExtendedClass.prototype.__proto__ === RootClass.prototype)
+
 
