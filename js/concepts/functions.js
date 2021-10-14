@@ -1,4 +1,4 @@
-/* TOPIC: functions are first-class objects
+/* TOPIC: functions in JS are first-class functions, which means they are objects
 https://www.javascripttutorial.net/javascript-functions-are-first-class-citizens/
 
 which means, they can be stored in variables, passed into arguments, and returned

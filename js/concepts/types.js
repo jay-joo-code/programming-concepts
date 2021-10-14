@@ -21,3 +21,5 @@ object wrapper: upper camelcase
 */
 
 console.log('Number.prototype.__proto__ === Object.prototype', Number.prototype.__proto__ === Object.prototype)
+
+

@@ -107,4 +107,19 @@ function printBoo(suffix) {
 
 // console.log(n);
 
+/* Q: QWrong does the code below have any problems? */
+
+function encapsulatedStack() {
+  this.items = []
+
+  return {
+    push(item) {
+      this.items.push(item)
+    },
+    pop() {
+      return this.items.pop()
+    }
+  }
+}
+
 
