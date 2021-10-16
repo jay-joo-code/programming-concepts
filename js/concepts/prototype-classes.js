@@ -315,5 +315,5 @@ console.log('ExtendedClass.__proto__', ExtendedClass.__proto__ === RootClass)
 console.log('ExtendedClass.prototype.__proto__ === RootClass.prototype', ExtendedClass.prototype.__proto__ === RootClass.prototype)
 
 
-/* TOPIC: instanceof typeof (dynamic type checks) */
+
 
