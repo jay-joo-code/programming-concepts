@@ -62,7 +62,7 @@ Object.prototype.isPrototypeOf(tom); // G: true
 // all of the classes are in the prototype chain of tom 
 
 
-/* TOPIC: output? (prototypes extending classes, overriding methods) QWrong
+/* Q: QWrong output? (prototypes extending classes, overriding methods) 
 https://www.toptal.com/javascript/es6-class-chaos-keeps-js-developer-up
 
 es6 introduced classes, which turned JS prototypal inheritance to a blend between
@@ -70,30 +70,30 @@ prototypal and classical inheritance
 classes are still based on prototypal inheritance under the hood
 */
 
-function Proto() {
-  this.name = 'Proto'
-  return this;
-}
+// function Proto() {
+//   this.name = 'Proto'
+//   return this;
+// }
 
-Proto.prototype.getName = function() {
-  return this.name
-}
+// Proto.prototype.getName = function() {
+//   return this.name
+// }
 
-class MyClass extends Proto {
-  constructor() {
-    super()
-    this.name = 'MyClass'
-  }
-}
+// class MyClass extends Proto {
+//   constructor() {
+//     super()
+//     this.name = 'MyClass'
+//   }
+// }
 
-const instance = new MyClass()
-console.log(instance.getName())	// MyClass
-Proto.prototype.getName = function() { return 'Overridden in Proto' }
-console.log(instance.getName())	// 'Overridden in Proto'
-MyClass.prototype.getName = function() { return 'Overridden in MyClass' }
-console.log(instance.getName())	// 'Overridden in MyClass'
-instance.getName = function() { return 'Overridden in instance' }
-console.log(instance.getName())	// 'Overridden in instance'
+// const instance = new MyClass()
+// console.log(instance.getName())	// MyClass
+// Proto.prototype.getName = function() { return 'Overridden in Proto' }
+// console.log(instance.getName())	// 'Overridden in Proto'
+// MyClass.prototype.getName = function() { return 'Overridden in MyClass' }
+// console.log(instance.getName())	// 'Overridden in MyClass'
+// instance.getName = function() { return 'Overridden in instance' }
+// console.log(instance.getName())	// 'Overridden in instance'
 
 /* --ans-- */
 
@@ -124,13 +124,14 @@ console.log(instance.getName())	// 'Overridden in instance'
 
 
 
-/* Q: QWrong convert the following into ES5, utilizing constructor functions */
+/* Q: QWrong QWrong convert the following into ES5, utilizing constructor functions */
 /* class in es6 is just a syntactic sugar coating around constructor functions */
 
 // class Person {
 //   constructor(name) {
 //     this.name = name;
 //   }
+
 //   hello() {
 //     return 'hello ' + this.name;
 //   }
@@ -147,52 +148,46 @@ console.log(instance.getName())	// 'Overridden in instance'
 // }
 
 
-// function Person(name) {
+// /* --ans-- */
+
+// function Person2(name) {
 //   this.name = name;
 // }
-
-// Person.prototype.hello = function() {
+// Person2.prototype.hello = function hello() {
 //   return 'hello ' + this.name;
-// }
-
-// function Developer(name, title) {
-//   Person.call(this, name);
+// };
+// function Developer2(name, title) {
+//   Person2.call(this, name);
 //   this.title = title;
 // }
+
+// // Object.create creates a new object, using its argument as the prototype
+// // this allows prototype chaining
+// Developer2.prototype = Object.create(Person2.prototype);
+
+// // constructor is a pointer to the object type
+// Developer2.prototype.constructor = Developer2;
+
+// Developer2.prototype.getTitle = function getTitle() {
+//   return this.title;
+// };
+
+
+/* Q: what is your opinion on the statement "javascript is an OO language" */
 
 
 /* --ans-- */
 
-function Person2(name) {
-  this.name = name;
-}
-Person2.prototype.hello = function hello() {
-  return 'hello ' + this.name;
-};
-function Developer2(name, title) {
-  Person2.call(this, name);
-  this.title = title;
-}
+/* 
+some of the main qualities of object oriented languages are:
+1. polymorphism / inheritance 
+prototypal inheritance 
+different from classical inheritance
 
-// Object.create creates a new object, using its argument as the prototype
-// this allows prototype chaining
-Developer2.prototype = Object.create(Person2.prototype);
+2. encapsulation
+with closures
 
-// constructor is a pointer to the object type
-Developer2.prototype.constructor = Developer2;
+*/
 
-Developer2.prototype.getTitle = function getTitle() {
-  return this.title;
-};
 
-class Root {
-  constructor() {
-    this.foo = 'boo'
-  }
-}
-
-class Extended extends Root {
-}
-
-console.log('Extended.__proto__.prototype === Root.prototype', Extended.__proto__.prototype === Root.prototype)
 

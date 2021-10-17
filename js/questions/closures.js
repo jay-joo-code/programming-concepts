@@ -92,45 +92,45 @@
 
 // /* Q: QCorrect change createStack so that it encapsulates stack.items */
 
-function createStack() {
-  return {
-    items: [],
-    push(item) {
-      this.items.push(item);
-    },
-    pop() {
-      return this.items.pop();
-    }
-  };
-}
+// function createStack() {
+//   return {
+//     items: [],
+//     push(item) {
+//       this.items.push(item);
+//     },
+//     pop() {
+//       return this.items.pop();
+//     }
+//   };
+// }
 
-const stack = createStack();
+// const stack = createStack();
 
-stack.push(10);
-stack.push(5);
-stack.pop(); // => 5
-stack.items; // => [10]
-stack.items = [10, 100, 1000]; // Encapsulation broken!
+// stack.push(10);
+// stack.push(5);
+// stack.pop(); // => 5
+// stack.items; // => [10]
+// stack.items = [10, 100, 1000]; // Encapsulation broken!
 
-function createEncapStack() {
-  const stack = []
+// function createEncapStack() {
+//   const stack = []
 
-  return {
-    push(item) {
-      stack.push(item)
-    },
-    pop() {
-      return stack.pop()
-    }
-  }
-}
+//   return {
+//     push(item) {
+//       stack.push(item)
+//     },
+//     pop() {
+//       return stack.pop()
+//     }
+//   }
+// }
 
-const encapStack = createEncapStack()
+// const encapStack = createEncapStack()
 
-encapStack.push(10)
-encapStack.push(5)
-console.log('encapStack.pop()', encapStack.pop())
-console.log('encapStack.items', encapStack.items)
+// encapStack.push(10)
+// encapStack.push(5)
+// console.log('encapStack.pop()', encapStack.pop())
+// console.log('encapStack.items', encapStack.items)
 
 /* Q: QWrong implement multiply 
 If multiply(num1, numb2) is invoked with 2 arguments, it should return the multiplication of the 2 arguments.
@@ -162,16 +162,16 @@ But if invoked with 1 argument const anotherFunc = multiply(num1), the function 
 
 /* Q: QCorrect */
 
-function createBase(value) {
-  // implement
-  return function(input) {
-    return input + value
-  }
-}
+// function createBase(value) {
+//   // implement
+//   return function(input) {
+//     return input + value
+//   }
+// }
 
-var addSix = createBase(6);
-console.log('addSix(10); // returns 16', addSix(10))
-console.log('addSix(21); // returns 27', addSix(21))
+// var addSix = createBase(6);
+// console.log('addSix(10); // returns 16', addSix(10))
+// console.log('addSix(21); // returns 27', addSix(21))
 
 /* Q: QWrong output? */
 
@@ -196,5 +196,63 @@ console.log('addSix(21); // returns 27', addSix(21))
 // }
 // console.log(createFunction()()); // 200
 
+/* Q: QWrong give an example of encapsulation with closures and constructor functions */
+
+/* --ans-- */
+
+// function Example() {
+//   const secret = 'secret text'
+
+//   this.getSecret = function() {
+//     return secret
+//   }
+// }
+
+// const instance = new Example()
+// console.log('instance.getSecret()', instance.getSecret())
+// console.log('instance.secret', instance.secret)
+
+/* Q: QWrong implement a createCounter factory function with a private field count */
+
+// function createCounter() {
+//   const count = 0
+
+//   return {
+//     getCount() {
+//       return count
+//     }
+//   }
+// }
+
+// const counter = createCounter()
+// console.log('counter.count', counter.count)
+// console.log('counter.getCount()', counter.getCount())
+
+/* Q: give example of a private field in JS classes */
+
+// class Example {
+//   #secret = 'secret text'
+
+//   getSecret() {
+//     return this.#secret
+//   }
+// }
+
+// const instance = new Example()
+// console.log('instance.getSecret()', instance.getSecret())
+// console.log('instance.secret', instance.secret)
+
+/* Q: QRetry */
+
+// var x = 'log'
+// function f1() {
+//   console.log(x)
+// }
+// x = 'dog'
+// function f2() {
+//   f1()
+// }
+
+// f2()
 
 

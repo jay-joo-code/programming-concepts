@@ -14,6 +14,7 @@
 + improves code readability
 
 3. async await
-
-
+> handles asynchronous with syntax that looks synchronous
 */
+
+
