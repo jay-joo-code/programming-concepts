@@ -30,6 +30,8 @@ will throw a reference error: foo is not defined
 
 /* Q: In JS, how would you make a variable read-only? */
 
+/* --ans-- */
+
 function readOnlyVar(initValue) {
   var value = initValue
 
