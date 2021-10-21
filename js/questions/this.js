@@ -5,24 +5,24 @@
 // const fn = () => {};
 // console.log(typeof fn);
 
-/* Q: output? QWrong */
+/* Q: QWrong QWrong output? */
 
-'use strict';
+// 'use strict';
 
-const user = {
-  id: 551,
-  name: 'Tom',
-  getId() {
-    return this.id;
-  },
-  credentials: {
-    id: 120,
-    username: 'tom',
-    getId() {
-      return this.id;
-    }
-  },
-};
+// const user = {
+//   id: 551,
+//   name: 'Tom',
+//   getId() {
+//     return this.id;
+//   },
+//   credentials: {
+//     id: 120,
+//     username: 'tom',
+//     getId() {
+//       return this.id;
+//     }
+//   },
+// };
 
 // const getId = user.credentials.getId;
 // console.log(getId()); 
