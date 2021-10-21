@@ -1,11 +1,9 @@
 
 
 /* Q: output? QCorrect */
-/* function */
 
-const fn = () => {};
-console.log(typeof fn);
-
+// const fn = () => {};
+// console.log(typeof fn);
 
 /* Q: output? QWrong */
 
@@ -26,53 +24,53 @@ const user = {
   },
 };
 
-const getId = user.credentials.getId;
-console.log(getId()); 
+// const getId = user.credentials.getId;
+// console.log(getId()); 
 
 /* Q: output? QWrong */
 
-function hello() {
-  setTimeout(function() {
-    console.log(this.foo);
-  }, 100);
-}
+// function hello() {
+//   setTimeout(function() {
+//     console.log(this.foo);
+//   }, 100);
+// }
 
-hello.call({foo: 'tom'});
+// hello.call({foo: 'tom'});
 
 /* Q: output? QWrong */
 
-function hello() {
-  function hi() {
-    console.log('this', this);
-    console.log(this.foo);
-  }
-  hi()
-}
+// function hello() {
+//   function hi() {
+//     console.log('this', this);
+//     console.log(this.foo);
+//   }
+//   hi()
+// }
 
-hello.call({foo: 'tom'});
+// hello.call({foo: 'tom'});
 
 /* Q: how to fix the below code to output 'tom'? QWrong */
 
-function hello() {
-  setTimeout(function() {
-    console.log(this.foo);
-  }, 100);
-}
+// function hello() {
+//   setTimeout(function() {
+//     console.log(this.foo);
+//   }, 100);
+// }
 
-hello.call({foo: 'tom'});
+// hello.call({foo: 'tom'});
 
 /* Q: how to fix code below to print name? QCorrect */
 
-function Person(nickname) {
-  this.nickname = nickname;
-}
+// function Person(nickname) {
+//   this.nickname = nickname;
+// }
 
-Person.prototype.getName = () => {
-  return this.nickname;
-};
+// Person.prototype.getName = () => {
+//   return this.nickname;
+// };
 
-const tom = new Person('Tom');
-console.log('tom.getName()', tom.getName());
+// const tom = new Person('Tom');
+// console.log('tom.getName()', tom.getName());
 
 /* Q: what could be an implementation of makeAdd? QWrong QCorrect */
 
@@ -85,12 +83,12 @@ console.log('tom.getName()', tom.getName());
 /* Q: How can we define a function that takes a function as argument 
 and returns a new version of the function that can be called only once? QWrong */
 
-function callOnce(fn) {
-}
+// function callOnce(fn) {
+// }
 
-function printBoo(suffix) {
-  console.log('boo ' + suffix)
-}
+// function printBoo(suffix) {
+//   console.log('boo ' + suffix)
+// }
 
 // var onceBoo = callOnce(printBoo)
 // onceBoo('foo1')
@@ -109,17 +107,17 @@ function printBoo(suffix) {
 
 /* Q: QWrong does the code below have any problems? */
 
-function encapsulatedStack() {
-  this.items = []
+// function encapsulatedStack() {
+//   this.items = []
 
-  return {
-    push(item) {
-      this.items.push(item)
-    },
-    pop() {
-      return this.items.pop()
-    }
-  }
-}
+//   return {
+//     push(item) {
+//       this.items.push(item)
+//     },
+//     pop() {
+//       return this.items.pop()
+//     }
+//   }
+// }
 
 

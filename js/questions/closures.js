@@ -256,3 +256,21 @@ But if invoked with 1 argument const anotherFunc = multiply(num1), the function 
 // f2()
 
 
+/* Q: QRetry what is a closure? */
+
+/* --ans-- */
+
+/* 
+a closure is a function bundled with its lexical scope. 
+it's created at run time during function creation 
+since the closure is created during function creation, 
+the lexical scope in the closure depends on where the function is defined
+*/
+
+/* Q: QRetry what is a pure function? */
+
+/* --ans-- */
+/* 
+the output of a pure function is only dependent on the arguments supplied. 
+the output is not affected by any external states or variables. 
+*/

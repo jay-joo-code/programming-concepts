@@ -6,13 +6,9 @@ instance: Object.getPrototypeOf(instance) OR instance.__proto__ (deprec)
 constructor function: ObjectType.prototype property
 
 https://github.com/sudheerj/javascript-interview-questions
-
-*/
-
-/* 
 https://chamikakasun.medium.com/javascript-prototype-and-prototype-chain-explained-fdc2ec17dd04
-
 */
+
 
 /* defining objects without prototype chaining */
 
@@ -38,6 +34,8 @@ creates eat method for all person objects. wastes memory.
 need something like static functions in Java, so that the method can be defined once
 and used for all objects / instances
 */
+
+
 
 /* 
 prototype is a property of a javascript constructor function
@@ -260,8 +258,10 @@ key difference:
   - prototypes are object instances themselves
   - there is no encapsulation with prototypes alone (no private, protected keywords)
 
-
 */
+
+
+
 
 function TestClass2(boo) {
   this.boo = boo

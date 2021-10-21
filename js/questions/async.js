@@ -281,3 +281,14 @@ when error is logged in the then block it displays undefined. */
 // });
 
 
+/* Q: what is AJAX? */
+
+/* --ans-- */
+
+/*  
+https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX/Getting_Started
+
+AJAX = asynchronous javascript and xml
+
+AJAV is the use of XMLHttpRequest object to communicate with servers
+*/
