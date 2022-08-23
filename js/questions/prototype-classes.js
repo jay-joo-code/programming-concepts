@@ -1,4 +1,4 @@
-/* Q: QWrong What would be the output of following code ? */
+/* Q: QWrong QCorrect What would be the output of following code ? */
 
 // var employeeId = 'b';
 
@@ -6,16 +6,19 @@
 // 	this.employeeId = 'a';
 // }
 
-// console.log(new Employee().employeeId); 
+// console.log(new Employee().employeeId);
 
-// Employee.prototype.employeeId = 'c'; 
+// Employee.prototype.employeeId = 'c';
 // Employee.prototype.JobId = 'd';
 
-// console.log(new Employee().JobId);  
+// console.log(new Employee().JobId);
 // console.log(new Employee().employeeId);
 
 /* --ans-- */
-/* instance property takes priority over object type prototype */
+/*
+instance property takes priority over object type prototype
+because instance is lower down in the prototype chain
+*/
 
 
 /* Q: QRetry What would be the output of following code ? */
@@ -34,18 +37,18 @@
 // }
 
 // personObj.print();
-// personObj.getName2(); 
+// personObj.getName2();
 
 
 /* Q: QCorrect what does the new keyword do? */
 
 /* --ans-- */
 
-/* 
+/*
 create a new empty object
-creates a reference to the prototype object 
+creates a reference to the prototype object
 assigns the newly created object to this
-return this 
+return this
 */
 
 /* Q: QWrong QWrong value of A .. G  */
@@ -73,11 +76,11 @@ return this
 // Person.prototype.isPrototypeOf(tom); // F: true
 // Object.prototype.isPrototypeOf(tom); // G: true
 
-// since tom is an instance of Developer, and it inherits from all of the following objects 
-// all of the classes are in the prototype chain of tom 
+// since tom is an instance of Developer, and it inherits from all of the following objects
+// all of the classes are in the prototype chain of tom
 
 
-/* Q: QWrong QCorrect output? (prototypes extending classes, overriding methods) 
+/* Q: QWrong QCorrect output? (prototypes extending classes, overriding methods)
 https://www.toptal.com/javascript/es6-class-chaos-keeps-js-developer-up
 
 es6 introduced classes, which turned JS prototypal inheritance to a blend between
@@ -193,12 +196,12 @@ classes are still based on prototypal inheritance under the hood
 
 /* --ans-- */
 
-/* 
+/*
 some of the main qualities of object oriented languages are:
 1. object + instance
 
-2. polymorphism / inheritance 
-prototypal inheritance 
+2. polymorphism / inheritance
+prototypal inheritance
 different from classical inheritance
 
 3. encapsulation
@@ -351,7 +354,7 @@ https://arthur-zheng.gitbooks.io/front-end-interview-questions/content/string.ht
 /* Q: what is the benefit of the prototypal inheritance model */
 
 /* --ans-- */
-/* 
+/*
 inheritance
 
 */
@@ -392,7 +395,7 @@ inheritance
 
 /* --ans-- */
 
-/* 
+/*
 except for primitive types, JS only has objects
 each object is linked to another object, which is called its prototype
 */
