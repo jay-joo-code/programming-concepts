@@ -1,17 +1,17 @@
-// /* Q: output? QWrong QCorrect */
+// /* Q: output? QWrong QCorrect QWrong */
 
-// function SecretiveProto(specialSecret) {
+// function SecretiveProto() {
 //   const secret = "secret text"
-//   this.specialSecret = specialSecret
+//   this.publicText = 'public text'
 
 //   this.spillTheBeans = function() {
 //     return secret
 //   }
 // }
 
-// const blabbermouth = new SecretiveProto('special secret')
+// const blabbermouth = new SecretiveProto()
 // console.log('blabbermouth.secret', blabbermouth.secret)
-// console.log('blabbermouth.specialSecret', blabbermouth.specialSecret)
+// console.log('blabbermouth.publicText', blabbermouth.publicText)
 // console.log('blabbermouth.spillTheBeans()', blabbermouth.spillTheBeans())
 
 // /* Q: which functions access other scope? QCorrect */
@@ -68,7 +68,7 @@
 // function createIncrement() {
 //   let count = 0;
 
-//   function increment() { 
+//   function increment() {
 //     count++;
 //   }
 
@@ -77,17 +77,42 @@
 //   function log() {
 //     console.log(message);
 //   }
-  
+
 //   return [increment, log];
 // }
 
 // const [increment, log] = createIncrement();
 
-// increment(); 
-// increment(); 
-// increment(); 
+// increment();
+// increment();
+// increment();
 
-// log(); // What is logged? 
+// log(); // What is logged?
+
+/* --ans-- different implementation below */
+
+// function incrementor() {
+//   let value = 0
+
+//   function increment() {
+//     value += 1
+//   }
+
+//   function getValue() {
+//     return value
+//   }
+
+//   return {
+//     getValue,
+//     increment
+//   }
+// }
+
+// const instance = incrementor()
+
+// instance.increment()
+// instance.increment()
+// console.log('getValue()', instance.getValue())
 
 
 // /* Q: QCorrect change createStack so that it encapsulates stack.items */
@@ -132,7 +157,7 @@
 // console.log('encapStack.pop()', encapStack.pop())
 // console.log('encapStack.items', encapStack.items)
 
-/* Q: QWrong implement multiply 
+/* Q: QWrong implement multiply
 If multiply(num1, numb2) is invoked with 2 arguments, it should return the multiplication of the 2 arguments.
 
 But if invoked with 1 argument const anotherFunc = multiply(num1), the function should return another function. The returned function when called anotherFunc(num2) performs the multiplication num1 * num2.
@@ -142,7 +167,7 @@ But if invoked with 1 argument const anotherFunc = multiply(num1), the function 
 //   // Write your code here...
 // }
 
-// multiply(4, 5); 
+// multiply(4, 5);
 // console.log('multiply(4, 5); // => 20', multiply(4, 5))
 // console.log('multiply(3, 3); // => 9', multiply(3, 3))
 // const double = multiply(2);
@@ -173,7 +198,7 @@ But if invoked with 1 argument const anotherFunc = multiply(num1), the function 
 // console.log('addSix(10); // returns 16', addSix(10))
 // console.log('addSix(21); // returns 27', addSix(21))
 
-/* Q: QWrong output? */
+/* Q: QWrong QCorrect output? */
 
 // var a = 100;
 // function createFunction() {
@@ -182,7 +207,7 @@ But if invoked with 1 argument const anotherFunc = multiply(num1), the function 
 //         return a;
 //     }
 // }
-// console.log(createFunction()()); 
+// console.log(createFunction()());
 
 
 // /* --ans-- */
@@ -197,6 +222,23 @@ But if invoked with 1 argument const anotherFunc = multiply(num1), the function 
 // console.log(createFunction()()); // 200
 
 /* Q: QWrong give an example of encapsulation with closures and constructor functions */
+
+// function Example() {
+//   const secret = 'secret text'
+
+//   this.getSecret = function() {
+//     return secret
+//   }
+
+//   this.getSecretArrow = () => {
+//     return secret
+//   }
+// }
+
+// const instance = new Example()
+// console.log('instance.getSecret()', instance.getSecret())
+// console.log('instance.getSecretArrow()', instance.getSecretArrow())
+
 
 /* --ans-- */
 
@@ -242,6 +284,7 @@ But if invoked with 1 argument const anotherFunc = multiply(num1), the function 
 // console.log('instance.getSecret()', instance.getSecret())
 // console.log('instance.secret', instance.secret)
 
+
 /* Q: QRetry */
 
 // var x = 'log'
@@ -260,17 +303,17 @@ But if invoked with 1 argument const anotherFunc = multiply(num1), the function 
 
 /* --ans-- */
 
-/* 
-a closure is a function bundled with its lexical scope. 
-it's created at run time during function creation 
-since the closure is created during function creation, 
+/*
+a closure is a function bundled with its lexical scope.
+it's created at run time during function creation
+since the closure is created during function creation,
 the lexical scope in the closure depends on where the function is defined
 */
 
 /* Q: QRetry what is a pure function? */
 
 /* --ans-- */
-/* 
-the output of a pure function is only dependent on the arguments supplied. 
-the output is not affected by any external states or variables. 
+/*
+the output of a pure function is only dependent on the arguments supplied.
+the output is not affected by any external states or variables.
 */
